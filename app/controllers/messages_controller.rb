@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
    array = []
    current_user.messages.each {|message| array.push(message.sentiment_score)}
-   my_average_sent_score= array.sum / array.size
+   my_average_sent_score= array.compact.sum/array.compact.size
 
 
  end
