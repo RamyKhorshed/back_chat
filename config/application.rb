@@ -1,6 +1,22 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'pry'
+
+require "sentimentalizer"
+
+Sentimentalizer.setup
+
+# or, wrap it in a class so setup can be automatic
+class Analyzer
+  def initialize
+    Sentimentalizer.setup
+  end
+
+  def process(phrase)
+    Sentimentalizer.analyze phrase
+  end
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,7 +30,7 @@ module Mychatapp
     config.middleware.insert_before 0, Rack::Cors do
      allow do
        origins '*'
-       resource '*', :headers => :any, :methods => [:get, :post, :options]
+       resource '*', :headers => :any, :methods => [:get, :post, :patch, :options]
      end
    end
 
