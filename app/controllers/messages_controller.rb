@@ -1,11 +1,15 @@
 class MessagesController < ApplicationController
   def create
-  byebug
+
    current_user = User.find_by_username(params[:username])
+   current_chat = Chat.find(params[:chat])
+
    message = current_user.messages.build(message_params)
+   current_chat.messages << message
+
    message.sentiment_score = Sentimentalizer.analyze(message.content).overall_probability
    if message.save
-     ActionCable.server.broadcast 'room_channel',
+     ActionCable.server.broadcast "room_channel_#{current_chat.id}",
                                   content:  message.content,
                                   username: message.user.username,
                                   messagescore: message.sentiment_score

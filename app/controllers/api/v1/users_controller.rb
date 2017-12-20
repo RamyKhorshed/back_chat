@@ -7,7 +7,8 @@ class Api::V1::UsersController < ActionController::API
   def show
     id = params[:id].to_i-1
     @user = User.all[id]
-    render json: @user
+
+    render json: {chats:@user.chats, users: User.all}
   end
 
   def create
