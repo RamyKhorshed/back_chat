@@ -65,6 +65,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     erubi (1.7.0)
+    excon (0.60.0)
     execjs (2.7.0)
     ffi (1.9.18)
     figaro (1.1.1)
@@ -190,6 +191,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  excon
   figaro
   jbuilder (~> 2.5)
   jwt

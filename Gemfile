@@ -13,6 +13,8 @@ gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 
 gem 'pg', '~> 0.18'
+gem 'excon'
+gem 'figaro'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

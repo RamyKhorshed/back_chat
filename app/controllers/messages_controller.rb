@@ -8,17 +8,17 @@ class MessagesController < ApplicationController
    current_chat.messages << message
 
    message.sentiment_score = Sentimentalizer.analyze(message.content).overall_probability
+   my_sentiment_this_chat = Chat.user_sentiment_in_chat(current_user,[current_chat] )
+   my_sentiment_overall = Chat.user_overall_sentiment(current_user)
+
    if message.save
      ActionCable.server.broadcast "room_channel_#{current_chat.id}",
                                   content:  message.content,
                                   username: message.user.username,
-                                  messagescore: message.sentiment_score
+                                  messagescore: message.sentiment_score,
+                                  my_sentiment_this_chat: my_sentiment_this_chat,
+                                  my_sentiment_overall: my_sentiment_overall
    end
-
-   array = []
-   current_user.messages.each {|message| array.push(message.sentiment_score)}
-   my_average_sent_score= array.compact.sum/array.compact.size
-
 
  end
 
