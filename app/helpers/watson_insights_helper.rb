@@ -1,0 +1,2 @@
+module WatsonInsightsHelper
+end

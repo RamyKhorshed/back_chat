@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 gem "sentimentalizer"
 gem 'jwt'
-gem "figaro"
+gem 'figaro'
 gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -14,7 +14,6 @@ gem 'rails', '~> 5.1.4'
 
 gem 'pg', '~> 0.18'
 gem 'excon'
-gem 'figaro'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

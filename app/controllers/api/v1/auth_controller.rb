@@ -2,6 +2,8 @@
 
 class Api::V1::AuthController < ApplicationController
 
+
+
   def create
     user = User.find_by(username: params[:username])
 
@@ -17,7 +19,9 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def show
+
     if current_user
+
       render json: {
         id: current_user.id,
         username: current_user.username
