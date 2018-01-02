@@ -12,8 +12,8 @@ class Api::V1::UsersController < ActionController::API
   end
 
   def create
-      @user = User.create(username: params["username"], password: params["password"], first_name: params["first_name"], last_name: params["last_name"])
-      render json: @user.to_json
+    @user = User.create(username: params["username"], password: params["password"], first_name: params["first_name"], last_name: params["last_name"])
+    render json: @user.to_json
   end
 
   def update

@@ -49,5 +49,19 @@ class Chat < ApplicationRecord
     message_sentiment(messages.all)
   end
 
+  def self.words_in_chat(user,chat)
+    messages = user_messages_in_chat(user, chat)
+    count = 0
+    messages.each{|message| count += message.content.split.size}
+    count
+  end
+
+  def self.update_words_in_chat(user,chat)
+    messages = chat.messages.all.where({user_id:user.id})
+    count = 0
+    messages.each{|message| count += message.content.split.size}
+    count
+  end
+
 
 end

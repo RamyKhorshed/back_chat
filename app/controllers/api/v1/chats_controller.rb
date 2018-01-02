@@ -26,7 +26,9 @@ class Api::V1::ChatsController < ActionController::API
     friend_sentiment_overall = Chat.user_overall_sentiment(@current_friend)
     my_sentiment_overall = Chat.user_overall_sentiment(@user)
 
-    render json: {chat_messages: message_array, chat_id: chat_id, friend_sentiment_this_chat: friend_sentiment_this_chat, my_sentiment_this_chat: my_sentiment_this_chat, friend_sentiment_overall: friend_sentiment_overall, my_sentiment_overall: my_sentiment_overall}
+    word_count = Chat.words_in_chat(@current_friend, @common_chat)
+
+    render json: {chat_messages: message_array, chat_id: chat_id, friend_sentiment_this_chat: friend_sentiment_this_chat, my_sentiment_this_chat: my_sentiment_this_chat, friend_sentiment_overall: friend_sentiment_overall, my_sentiment_overall: my_sentiment_overall, word_count: word_count}
   end
 
 end
